@@ -1,4 +1,4 @@
-﻿#include "CalcMedia.h"
+#include "CalcMedia.h"
 
 void CalculadoraMedia::adicionarNota(float nota) {
 	Notas.push_back(nota); //adiciona quantidade ao vetor
@@ -9,7 +9,7 @@ float CalculadoraMedia::calcularMedia() {
 		return 0; //retorna 0 se o vetor estiver vazio
 	}
 	float soma = 0;
-	for (float nota : Notas) { //percorre todo o vetor notas
+	for (float nota : Notas) { 
 		soma += nota;
 	}
 	return soma / Notas.size(); //calcula e retorna as notas
