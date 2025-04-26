@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <clocale>
 #include <Windows.h>
@@ -53,12 +53,11 @@ bool numeroValido(const std::string& str) {
 	return true;
 }
 
-
 int main() {
 
 	std::setlocale(LC_ALL, "Portuguese"); //comando para usar acentuação
 
-	CalculadoraMedia calc; //chamada da classe
+	CalculadoraMedia calc; 
 	std::string Opcao;
 
 	do {
@@ -78,7 +77,7 @@ int main() {
 				try {
 					qtdNotas = std::stoi(inputQtdNotas);  //converte a string para inteiro
 					if (qtdNotas > 0) {
-						qtdValida = true;  //caso seja válidado sai do loop
+						qtdValida = true;  
 					}
 					else {
 						std::cout << "Por favor, insira um número maior que 0.\n"; //caso seja 0 ou número negativo da erro
@@ -89,55 +88,36 @@ int main() {
 				}
 			}
 			else {
-				std::cout << "Entrada inválida. Por favor, digite apenas números inteiros.\n";//inválida a entrada caso não seja um numero inteiro
+				std::cout << "Entrada inválida. Por favor, digite apenas números inteiros.\n";
 			}
 		}
 
 		std::cout << "\n";
 
-		for (int i = 0; i < qtdNotas; i++) { //loop para executar a quantidade de notas digitada pelo usuário
+		for (int i = 0; i < qtdNotas; i++) { 
 			float Notas;
-			std::string inputNota;
-			bool notaValida = false;
-
-			while (!notaValida) { //loop q continua somente se a nota for válida
-				std::cout << "Digite a nota " << i + 1 << ": ";
-				std::getline(std::cin, inputNota);
-
-				if (numeroValido(inputNota)) { //verificada se a entrada é um número válido
-					try {
-						Notas = std::stof(inputNota);  //converte a string para um float
-						calc.adicionarNota(Notas);   //adiciona a nota na calculadora
-						notaValida = true;
-					}
-					catch (const std::invalid_argument& e) {
-						std::cout << "Entrada inválida. Tente novamente.\n"; //falha caso a conversao para float de errado.
-					}
-				}
-				else {//caso não seja um número válido resulta em falha
-					std::cout << "Entrada inválida. Use apenas números e ponto para separar a casa decimal.\n";
-				}
-			}
+			std::cout << "Digite a nota " << i + 1 << ": ";
+			std::cin >> Notas;  
+			std::cin.ignore(); // Limpa o buffer para evitar que o Enter anterior interfira
+			calc.adicionarNota(Notas);  
 		}
 
 		calc.exibirResultado();
 
 		std::cout << "*************************************************************************\n";
 
-
 		bool entradaValida = false;
 
-		while (!entradaValida) { //continua apos entrada válida fornecida
+		while (!entradaValida) { //continua após entrada válida fornecida
 			std::cout << "\nDeseja realizar outro cálculo de média? (S/N): ";
-			std::getline(std::cin, Opcao);
+			std::getline(std::cin, Opcao);  
 
-			if (Opcao == "S" || Opcao == "s") { //caso seja "S" ou "s" a calculadora é reiniciada
+			if (Opcao == "S" || Opcao == "s") {
 				entradaValida = true;
 				std::cout << "\nAguarde enquanto a calculadora é reiniciada...\n";
 				calc.limparNotas();
 				Sleep(1000);
-				system("CLS"); //apaga os resultados anteriores (só funciona em OS Windows)
-
+				system("CLS"); //apaga os resultados anteriores (só funciona sistema Windows)
 			}
 			else if (Opcao == "N" || Opcao == "n") {
 				entradaValida = true;
@@ -150,7 +130,7 @@ int main() {
 			}
 		}
 
-	} while (Opcao != "N" && Opcao != "n"); // o loop continua enquanto a opção não for "N" ou "n"
+	} while (Opcao != "N" && Opcao != "n");
 
 	return 0;
 }
