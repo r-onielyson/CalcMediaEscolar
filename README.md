@@ -9,6 +9,9 @@ Este é um programa simples em C++ que permite calcular a média de notas inseri
 - Validação de entradas para evitar erros.
 - Opção de reiniciar o cálculo ou encerrar o programa.
 
+![Texto alternativo](https://i.imgur.com/bxdpp5y.png)
+
+
 
 - IDE: **Visual Studio 2022**
 
